@@ -8,8 +8,6 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Unocss from 'unocss/vite'
 
-const typeFile = fileURLToPath(new URL('./components.d.ts', import.meta.url))
-console.log('typeFile', typeFile)
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -22,16 +20,30 @@ export default defineConfig({
     vueJsx(),
     Unocss(),
     AutoImport({
-      imports: ['vue', 'vue-router'],
-      dts: typeFile,
+      imports: [
+        'vue',
+        'vue-router',
+        {
+          'element-plus': ['ElMessage', 'ElMessageBox', 'ElNotification']
+        },
+        {
+          from: 'element-plus',
+          imports: ['ElMessage', 'ElMessageBox', 'ElNotification'],
+          type: true
+        }
+      ],
+      dts: true,
       eslintrc: {
         enabled: true
-      }
+      },
+      dirs:['src/stores/**', 'src/hooks/**']
     }),
     Components({
       resolvers: [ElementPlusResolver()],
       extensions: ['vue', 'tsx'],
-      dts: typeFile
+      dts: true,
+      deep: true,
+      dirs: ['src/components']
     })
   ],
   resolve: {

@@ -4,6 +4,9 @@
     "ComponentPublicInstance": true,
     "ComputedRef": true,
     "EffectScope": true,
+    "ElMessage": true,
+    "ElMessageBox": true,
+    "ElNotification": true,
     "ExtractDefaultPropTypes": true,
     "ExtractPropTypes": true,
     "ExtractPublicPropTypes": true,
@@ -67,6 +70,14 @@
     "watch": true,
     "watchEffect": true,
     "watchPostEffect": true,
-    "watchSyncEffect": true
+    "watchSyncEffect": true,
+    "CloseType": true,
+    "setupStore": true,
+    "useLangStore": true,
+    "useRouterStore": true,
+    "useTagsStore": true,
+    "useUserStore": true,
+    "useHooks": true,
+    "useFetch": true
   }
 }

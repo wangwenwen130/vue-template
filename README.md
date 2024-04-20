@@ -1,39 +1,35 @@
-# vite-project
+# vue3-project
 
-This template should help get you started developing with Vue 3 in Vite.
+## 简介
 
-## Recommended IDE Setup
+V3 Admin Vite 是一个中后台管理系统基础解决方案，基于 Vue3、TypeScript、Element Plus、Pinia、 unocss、autoImport 和 Vite 等主流技术
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 功能
 
-## Type Support for `.vue` Imports in TS
+- 非常简洁：没有复杂的封装，没有复杂的类型体操，开箱即用
+- 自动引入：自动引入 components、 stoures 和 hooks 文件下的所有方法
+- 最新的依赖: 定期更新所有三方依赖至最新版
+- 有一点规整: 代码风格统一，命名风格统一，注释风格统一
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 开发
 
-## Customize configuration
+**_配置_**
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1. 一键安装 .vscode 目录中推荐的插件
+2. node 版本 18.x 或 20+
+3. pnpm 版本 8.x 或最新版
 
-## Project Setup
+**_进入项目目录_**
+cd vue-project
 
-```sh
-pnpm install
-```
+**_安装依赖_**  
+pnpm i
 
-### Compile and Hot-Reload for Development
-
-```sh
+**_启动服务_**  
 pnpm dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+**_代码检查_**  
 pnpm lint
-```
+
+**_代码格式化_**
+pnpm format

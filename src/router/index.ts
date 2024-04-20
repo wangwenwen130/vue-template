@@ -1,14 +1,26 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import type { App } from 'vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import Layout from '@/layout/index.vue'
+import Login from '@/views/login/index.vue'
+import { layoutChild } from './layout-child'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/Login',
+      name: 'Login',
+      meta: {
+        title: '登录'
+      },
+      component: Login
+    },
+    {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'Layout',
+      redirect: '/hotel',
+      component: Layout,
+      children: layoutChild
     }
   ]
 })
