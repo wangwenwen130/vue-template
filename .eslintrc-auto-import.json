@@ -78,6 +78,7 @@
     "useTagsStore": true,
     "useUserStore": true,
     "useHooks": true,
-    "useFetch": true
+    "useFetch": true,
+    "useCounterStore": true
   }
 }
