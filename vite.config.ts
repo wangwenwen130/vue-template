@@ -36,7 +36,7 @@ export default defineConfig({
       eslintrc: {
         enabled: true
       },
-      dirs:['src/stores/**', 'src/hooks/**']
+      dirs: ['src/stores/**', 'src/hooks/**', 'src/utils/**']
     }),
     Components({
       resolvers: [ElementPlusResolver()],
