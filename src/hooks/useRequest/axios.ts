@@ -27,11 +27,11 @@ const service = axios.create(options) as AxiosInstance
 setHandle(service)
 
 export const post = <T = unknown, K = any>(data: ReqParams<K>) => {
-  return service.post<ResPonse<T>>(data.url, data.data, data.config)
+  return service.post<Request.ReqRes<T>>(data.url, data.data, data.config)
 }
 
 export const get = <T = unknown, K = any>(data: ReqParams<K>) => {
-  return service.get<ResPonse<T>>(data.url, data.config)
+  return service.get<Request.ReqRes<T>>(data.url, data.config)
 }
 
 export default service

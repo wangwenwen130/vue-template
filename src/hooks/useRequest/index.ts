@@ -1,6 +1,6 @@
 import { get, post, type ReqParams, type ResPonse } from './axios'
 
-export const useRequest = <T>(data: ReqParams) => {
+export const useRequest = <T>(data: ReqParams, autoAbort = false) => {
   const { method: fun, data: params } = data
   const method = fun || 'POST'
 
@@ -25,24 +25,33 @@ export const useRequest = <T>(data: ReqParams) => {
     if (method === 'POST') {
       if (params && isObject(params)) {
         setJson()
-        return post<ResPonse<T>>(data)
-      } else return post<ResPonse<T>>(data)
+        return post<T>(data)
+      } else return post<T>(data)
     } else if (method === 'GET') {
-      return get<ResPonse<T>>(data)
+      return get<T>(data)
     } else {
       return Promise.reject('请求方式暂不支持')
     }
   }
 
-  onUnmounted &&
-    onUnmounted(() => {
-      controller.abort()
-    })
+  if (autoAbort) {
+    // 防止页面 频繁调用增加内存
+    onUnmounted &&
+      onUnmounted(() => {
+        controller.abort()
+      })
+  }
+
+  const result = getResult().then((val) => val)
 
   return {
-    result: getResult(),
-    cancel: () => {
-      controller.abort()
+    result,
+    cancel: () => controller.abort(),
+    then: <K = any>(fn: (value: ResPonse<T>) => K | PromiseLike<K>) => {
+      return result.then<K>(fn)
+    },
+    catch: <K = any>(err: any) => {
+      return result.catch<K>(err)
     }
   }
 }

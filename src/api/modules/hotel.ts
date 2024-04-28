@@ -3,9 +3,8 @@ export const HotelApi = {
 }
 
 export const getHotelList = (data: {}) => {
-  return useRequest({
+  return useRequest.post({
     url: HotelApi.hotelList,
-    method: 'POST',
     data
   })
 }
