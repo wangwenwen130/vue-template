@@ -1,8 +1,8 @@
 import { get, post, type ReqParams, type ResPonse } from './axios'
 
 export const useRequest = <T>(data: ReqParams) => {
-  const { methods, data: params } = data
-  const method = methods || 'POST'
+  const { method: fun, data: params } = data
+  const method = fun || 'POST'
 
   const setJson = () => {
     data.config = data.config || {}
@@ -45,4 +45,11 @@ export const useRequest = <T>(data: ReqParams) => {
       controller.abort()
     }
   }
+}
+
+useRequest.post = <T>(data: Omit<ReqParams, 'method'>) => {
+  return useRequest<T>({ ...data, method: 'POST' })
+}
+useRequest.get = <T>(data: Omit<ReqParams, 'method' | 'data'>) => {
+  return useRequest<T>({ ...data, method: 'GET' })
 }

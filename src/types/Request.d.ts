@@ -16,7 +16,7 @@ declare module Request {
 
   export interface ReqParams<K = unknown, D = any> {
     url: string
-    methods?: 'POST' | 'GET' // value 'POST'
+    method?: 'POST' | 'GET' // value 'POST'
     data?: K
     config?: D
   }
