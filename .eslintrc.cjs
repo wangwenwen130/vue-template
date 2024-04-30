@@ -19,7 +19,8 @@ module.exports = {
       {
         ignores: ['index']
       }
-    ]
+    ],
+    'no-useless-escape': 'off'
   }
   // overrides: [
   //   {
